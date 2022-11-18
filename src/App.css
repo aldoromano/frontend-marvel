@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
 
 html {
+  background: lightgray;
 }
 
 body {
@@ -22,4 +23,176 @@ h1 {
 .container {
   max-width: 1224px;
   margin: 0 auto;
+}
+
+/* Header */
+
+.header-container {
+  border: 1px solid grey;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.logo-container {
+  border: 1px solid red;
+  width: 10%;
+}
+
+.header-title {
+  /* border: 1px solid blue; */
+  width: 80%;
+}
+
+.logo-container img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  flex: 1;
+}
+
+.header-avatar-container {
+  border: 1px solid green;
+}
+
+/* Characters */
+
+.search-container {
+  max-width: 800px;
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-container input {
+  width: 20%;
+  height: 1.5rem;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  width: 80%;
+}
+
+.pagination-container {
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+}
+.comics-characters-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  height: 100%;
+  border: 2px solid blue;
+  margin-top: 2rem;
+}
+
+.comics-characters-container h3 {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: blueviolet;
+  text-overflow: ellipsis;
+  height: 35px;
+  color: grey;
+}
+
+.character-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  max-width: 250px;
+  margin-bottom: 2rem;
+}
+
+.character-container img {
+  height: 350px;
+  width: 250px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.character-container-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.character-container-footer button {
+  border: 1px solid blue;
+  cursor: pointer;
+}
+
+.character-favorite-container {
+  display: flex;
+  justify-content: end;
+}
+
+.character-favorite-container img {
+  height: 20px;
+  width: 20px;
+}
+
+.character-favorite-container .favorite {
+  background-color: green;
+}
+
+/* Détail d'un personnage : page Character.js */
+
+.character-detail-container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.character-heading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.character-heading-container img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+.character-heading-container div {
+  border: 1px solid black;
+  background-color: red;
+  height: 200px;
+  width: 200px;
+}
+
+.comics-related-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.comics-related-container h3 {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: blueviolet;
+  text-overflow: ellipsis;
+  height: 35px;
+}
+
+.comics-related-img-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  background-color: blue;
+  height: 200px;
+  width: 200px;
+}
+
+.comics-related-img-container img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
 }
