@@ -16,29 +16,35 @@ import Character from "./pages/Character";
 const urlBase = "http://localhost:4000";
 
 function App() {
-  const [limit, setLimit] = useState(100);
-  const [skip, setSkip] = useState(0);
-
+  const [limitCharacter, setLimitCharacter] = useState(100);
+  const [pageCharacter, setPageCharacter] = useState(1);
+  const [limitComics, setLimitComics] = useState(100);
+  const [pageComics, setPageComics] = useState(1);
   return (
     <Router>
       <Toaster />
       <Header></Header>
       <Routes>
-        {/* <Route path="/" element={<Home></Home>} /> */}
         <Route
           path="/"
           element={
             <Characters
               urlBase={urlBase}
-              limit={limit}
-              skip={skip}
+              limit={limitCharacter}
+              setLimit={setLimitCharacter}
+              pageNumber={pageCharacter}
+              setPageNumber={setPageCharacter}
             ></Characters>
           }
         />
         <Route
           path="/comics"
           element={
-            <Comics urlBase={urlBase} limit={limit} skip={skip}></Comics>
+            <Comics
+              urlBase={urlBase}
+              limit={setLimitComics}
+              skip={setPageComics}
+            ></Comics>
           }
         />
         <Route

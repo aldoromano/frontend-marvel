@@ -7,16 +7,23 @@ import Pagination from "../components/Pagination";
 import thumbUp from "../assets/images/thumbup.png";
 import Cookies from "js-cookie";
 
-const Characters = ({ urlBase }) => {
+const Characters = ({
+  urlBase,
+  limit,
+  setLimit,
+  pageNumber,
+  setPageNumber,
+}) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [name, setName] = useState("");
-  const [tabFavorite, setTabFavorite] = useState(
-    Cookies.get("character-favorite") || []
-  );
-
-  const [limit, setLimit] = useState(100);
-  const [pageNumber, setPageNumber] = useState(1);
+  const tab = Cookies.get("character-favorite")
+    ? JSON.parse(Cookies.get("character-favorite"))
+    : [];
+  // const [tabFavorite, setTabFavorite] = useState(
+  //   JSON.parse(Cookies.get("character-favorite")) || []
+  // );
+  const [tabFavorite, setTabFavorite] = useState(tab);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +47,7 @@ const Characters = ({ urlBase }) => {
   const handleFavorite = (id) => {
     const tab = [...tabFavorite];
     const indexId = tab.indexOf(id);
+    console.log("handleFavorite -> ", tab.length, " - ", indexId);
     // Si l'id est référencé dans les cookies, on souhaite enlever le favori
     if (indexId >= 0) {
       tab.splice(indexId, 1);
@@ -49,7 +57,8 @@ const Characters = ({ urlBase }) => {
     }
 
     setTabFavorite(tab);
-    Cookies.set("character-favorite", tab);
+
+    Cookies.set("character-favorite", JSON.stringify(tab));
   };
 
   return isLoading ? (
@@ -67,6 +76,7 @@ const Characters = ({ urlBase }) => {
       <div className="pagination-container">
         <Pagination
           data={data}
+          pageNumber={pageNumber}
           setPageNumber={setPageNumber}
           setLimit={setLimit}
           limit={limit}
