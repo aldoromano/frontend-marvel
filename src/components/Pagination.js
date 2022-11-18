@@ -87,18 +87,26 @@ const Pagination = ({ data, pageNumber, setPageNumber, limit, setLimit }) => {
   }
 
   return (
-    <div className="pagination-container">
-      {tab}
-      <input
-        type="text"
-        placeholder="Numbre d'offres par page"
-        value={limit}
-        onChange={(event) => {
-          setLimit(event.target.value);
-          setPageNumber(1);
-        }}
-      />
-    </div>
+    <>
+      <div className="pagination-container">
+        {tab}
+        <input
+          type="text"
+          placeholder="Numbre d'offres par page"
+          value={limit}
+          onChange={(event) => {
+            setLimit(event.target.value);
+            setPageNumber(1);
+          }}
+        />
+      </div>
+      <div>
+        <div>
+          [ Données : {data.count} éléments ({(pageNumber - 1) * limit + 1} /{" "}
+          {pageNumber * limit}) ]
+        </div>
+      </div>
+    </>
   );
 };
 
