@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import Cookies from "js-cookie";
+
+// Les composants
 import Pagination from "../components/Pagination";
 import handleFavorite from "../components/handleFavorite";
 
+// Les images
 import thumbUp from "../assets/images/thumbup.png";
-import Cookies from "js-cookie";
+import noThumbUp from "../assets/images/nothumbup.png";
 
 const Comics = ({ urlBase, limit, setLimit, pageNumber, setPageNumber }) => {
   const [data, setData] = useState();
@@ -18,8 +22,6 @@ const Comics = ({ urlBase, limit, setLimit, pageNumber, setPageNumber }) => {
   const [tabFavorite, setTabFavorite] = useState(tab);
 
   useEffect(() => {
-    console.log("UseEffect comics -> ", name, pageNumber, limit);
-
     const fetchData = async () => {
       // Requête axios vers backend REACTEUR
 
@@ -73,10 +75,14 @@ const Comics = ({ urlBase, limit, setLimit, pageNumber, setPageNumber }) => {
             <div className="character-container" key={character._id}>
               <div className="character-favorite-container">
                 <img
-                  src={thumbUp}
+                  src={
+                    tabFavorite.includes(character._id) ? thumbUp : noThumbUp
+                  }
                   alt="thumbUp"
                   className={
-                    tabFavorite.includes(character._id) ? "favorite" : null
+                    tabFavorite.includes(character._id)
+                      ? "favorite"
+                      : "nofavorite"
                   }
                   onClick={() => {
                     handleFavorite(

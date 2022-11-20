@@ -168,7 +168,12 @@ header {
 }
 
 .character-favorite-container .favorite {
+  margin-bottom: 1rem;
   background-color: green;
+}
+.character-favorite-container .nofavorite {
+  margin-bottom: 1rem;
+  background-color: grey;
 }
 
 /* Détail d'un personnage : page Character.js */
@@ -178,52 +183,73 @@ header {
   margin: 0 auto;
 }
 
+.character-nav-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.character-nav-container button {
+  cursor: pointer;
+  background-color: blue;
+  color: grey;
+  width: 150px;
+  border: 2px solid blue;
+  height: 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+}
 .character-heading-container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
   margin-top: 2rem;
+  height: 300px;
 }
 
 .character-heading-container img {
   width: 200px;
-  height: 200px;
+  height: 250px;
   object-fit: cover;
 }
+
 .character-heading-container div {
-  border: 1px solid black;
   background-color: red;
-  height: 200px;
+  height: 250px;
   width: 200px;
+  color: grey;
 }
 
 .comics-related-container {
+  margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .comics-related-container h3 {
   font-size: 0.8rem;
   font-weight: bold;
-  color: blueviolet;
+  color: grey;
   text-overflow: ellipsis;
   height: 35px;
+  background-color: black;
 }
 
 .comics-related-img-container {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   background-color: blue;
-  height: 200px;
+  height: 250px;
   width: 200px;
 }
 
 .comics-related-img-container img {
-  height: 200px;
+  height: 250px;
   width: 200px;
   object-fit: cover;
 }
@@ -252,6 +278,10 @@ header {
   color: blue;
   background-color: black;
   cursor: pointer;
+}
+
+.pagination-container button + .page-number {
+  color: red;
 }
 .pagination-container p {
   margin-left: 1rem;

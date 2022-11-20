@@ -41,7 +41,11 @@ const Pagination = ({ data, pageNumber, setPageNumber, limit, setLimit }) => {
         {"<<"}
       </button>
     );
-    tab.push(<button key={4}>{Math.round(pageNumber)}</button>);
+    tab.push(
+      <button className="page-number" key={4}>
+        {Math.round(pageNumber)}
+      </button>
+    );
     tab.push(
       <button
         key={5}

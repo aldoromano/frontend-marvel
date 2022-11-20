@@ -2,10 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import Pagination from "../components/Pagination";
-
-import thumbUp from "../assets/images/thumbup.png";
 import Cookies from "js-cookie";
+
+// Les composants
+import Pagination from "../components/Pagination";
+import handleFavorite from "../components/handleFavorite";
+
+// Les images
+import thumbUp from "../assets/images/thumbup.png";
+import noThumbUp from "../assets/images/nothumbup.png";
 
 const Characters = ({
   urlBase,
@@ -40,25 +45,25 @@ const Characters = ({
     fetchData();
   }, [urlBase, limit, pageNumber, name]);
 
-  // Gestion du cookie
-  const handleFavorite = (id) => {
-    const tab = [...tabFavorite];
-    const indexId = tab.indexOf(id);
+  // // Gestion du cookie
+  // const handleFavorite = (id) => {
+  //   const tab = [...tabFavorite];
+  //   const indexId = tab.indexOf(id);
 
-    // Si l'id est référencé dans les cookies, on souhaite enlever le favori
-    if (indexId >= 0) {
-      tab.splice(indexId, 1);
-      // S'il n'existe pas, on l'ajoute
-    } else {
-      tab.push(id);
-    }
+  //   // Si l'id est référencé dans les cookies, on souhaite enlever le favori
+  //   if (indexId >= 0) {
+  //     tab.splice(indexId, 1);
+  //     // S'il n'existe pas, on l'ajoute
+  //   } else {
+  //     tab.push(id);
+  //   }
 
-    // MAJ du state
-    setTabFavorite(tab);
+  //   // MAJ du state
+  //   setTabFavorite(tab);
 
-    // MAJ du cookie
-    Cookies.set("character-favorite", JSON.stringify(tab));
-  };
+  //   // MAJ du cookie
+  //   Cookies.set("character-favorite", JSON.stringify(tab));
+  // };
 
   return isLoading ? (
     <p> Loading ... </p>
@@ -93,13 +98,22 @@ const Characters = ({
             <div className="character-container" key={character._id}>
               <div className="character-favorite-container">
                 <img
-                  src={thumbUp}
+                  src={
+                    tabFavorite.includes(character._id) ? thumbUp : noThumbUp
+                  }
                   alt="thumbUp"
                   className={
-                    tabFavorite.includes(character._id) ? "favorite" : null
+                    tabFavorite.includes(character._id)
+                      ? "favorite"
+                      : "nofavorite"
                   }
                   onClick={() => {
-                    handleFavorite(character._id);
+                    handleFavorite(
+                      character._id,
+                      tabFavorite,
+                      setTabFavorite,
+                      "character-favorite"
+                    );
                   }}
                 />
               </div>

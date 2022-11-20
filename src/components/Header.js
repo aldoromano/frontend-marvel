@@ -15,7 +15,7 @@ const Header = () => {
             ? "Liste des BD MARVEL"
             : "Liste des personnages MARVEL"}
         </div>
-        <div className="header-avatar-container">AVATAR</div>
+        <div className="header-avatar-container"></div>
       </div>
     </header>
   );
