@@ -14,7 +14,7 @@ import Character from "./pages/Character";
 
 //const urlBase = "https://lereacteur-marvel-api.herokuapp.com";
 // const urlBase = "http://localhost:4000";
-const urlBase = "http://site--marvel-backend--ptpwtlnwq4wq.code.run";
+const urlBase = "https://site--marvel-backend--ptpwtlnwq4wq.code.run";
 
 function App() {
   const [limitCharacter, setLimitCharacter] = useState(100);
