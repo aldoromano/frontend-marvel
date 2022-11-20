@@ -3,11 +3,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
 
 html {
-  background: lightgray;
 }
 
 body {
   font-family: "Quicksand", sans-serif;
+  background-color: black;
 }
 
 h1 {
@@ -27,29 +27,37 @@ h1 {
 
 /* Header */
 
+header {
+  background-color: black;
+  color: white;
+  margin-bottom: 4rem;
+}
 .header-container {
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   height: 50px;
   display: flex;
   justify-content: space-between;
-  background-color: white;
+  background-color: blue;
 }
 
 .logo-container {
-  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 10%;
 }
 
 .header-title {
-  /* border: 1px solid blue; */
   width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
 }
 
 .logo-container img {
   height: 50px;
-  width: 50px;
   object-fit: cover;
-  flex: 1;
 }
 
 .header-avatar-container {
@@ -64,20 +72,31 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 2rem;
 }
 .search-container input {
   width: 20%;
   height: 1.5rem;
   border-radius: 5px;
-  border: 1px solid lightgray;
+  border: 2px solid blue;
   width: 80%;
+  background-color: black;
+  color: blue;
+  text-align: center;
 }
 
-.pagination-container {
-  display: flex;
-  flex-direction: center;
-  align-items: center;
+.search-container button {
+  background-color: blue;
+  color: grey;
+  font-weight: bold;
+  font-size: 1rem;
+  height: 2rem;
+  width: 150px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: solid 1px blue;
 }
+
 .comics-characters-container {
   max-width: 1024px;
   margin: 0 auto;
@@ -87,14 +106,14 @@ h1 {
   flex-wrap: wrap;
   /* align-items: center; */
   height: 100%;
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   margin-top: 2rem;
+  background-color: black;
 }
 
 .comics-characters-container h3 {
   font-size: 0.8rem;
   font-weight: bold;
-  color: blueviolet;
   text-overflow: ellipsis;
   height: 35px;
   color: grey;
@@ -109,12 +128,21 @@ h1 {
 }
 
 .character-container img {
-  height: 350px;
-  width: 250px;
+  height: 300px;
+  width: 190px;
   object-fit: cover;
   cursor: pointer;
   border-radius: 5px;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
+
+.character-container img:hover {
+  transform: scale(1.1);
+  -webkit-filter: opacity(0.5);
+  filter: opacity(0.5);
+}
+
 .character-container-footer {
   display: flex;
   justify-content: space-between;
@@ -124,11 +152,14 @@ h1 {
 .character-container-footer button {
   border: 1px solid blue;
   cursor: pointer;
+  color: blue;
+  text-align: center;
+  background-color: black;
 }
 
 .character-favorite-container {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .character-favorite-container img {
@@ -195,4 +226,49 @@ h1 {
   height: 200px;
   width: 200px;
   object-fit: cover;
+}
+
+/* Pagination */
+
+.pagination-container {
+  display: flex;
+  /* flex-direction: center; */
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-container input {
+  width: 10%;
+  border: 2px solid blue;
+  text-align: center;
+  color: blue;
+  background-color: black;
+  border-radius: 5px;
+}
+
+.pagination-container button {
+  margin-right: 1rem;
+  border: 2px solid blue;
+  color: blue;
+  background-color: black;
+  cursor: pointer;
+}
+.pagination-container p {
+  margin-left: 1rem;
+  color: grey;
+  font-size: 0.9rem;
+  margin-right: 1rem;
+}
+
+.pagination-data-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: grey;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.pagination-data-container div {
 }

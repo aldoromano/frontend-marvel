@@ -2,9 +2,13 @@ const Pagination = ({ data, pageNumber, setPageNumber, limit, setLimit }) => {
   // Calcul du nombre de pages
   let numberOfPages = data.count / (limit ? limit : 8);
 
+  // console.log("pagination -> ", pageNumber, limit);
+
   // On prévoit un tableau contenant autant d'éléments que de pages
   const tab = [];
 
+  // En cas de trop grand nombre de pages, on change la pagination =>
+  // Première page - < - << - > - >> - Dernière page
   if (numberOfPages > 20) {
     tab.push(
       <button
@@ -37,7 +41,7 @@ const Pagination = ({ data, pageNumber, setPageNumber, limit, setLimit }) => {
         {"<<"}
       </button>
     );
-    tab.push(<button key={4}>{pageNumber}</button>);
+    tab.push(<button key={4}>{Math.round(pageNumber)}</button>);
     tab.push(
       <button
         key={5}
@@ -71,6 +75,7 @@ const Pagination = ({ data, pageNumber, setPageNumber, limit, setLimit }) => {
       </button>
     );
   } else {
+    // Pagination classique : on affiche les numéros de page
     for (let i = 0; i < numberOfPages; i++) {
       // On met à jour dynamiquement le code HTML dans le tableau
       tab.push(
@@ -90,9 +95,10 @@ const Pagination = ({ data, pageNumber, setPageNumber, limit, setLimit }) => {
     <>
       <div className="pagination-container">
         {tab}
+        <p>Nombre d'élements / page</p>
         <input
           type="text"
-          placeholder="Numbre d'offres par page"
+          placeholder="Nombre d'éléments par page"
           value={limit}
           onChange={(event) => {
             setLimit(event.target.value);
@@ -100,11 +106,10 @@ const Pagination = ({ data, pageNumber, setPageNumber, limit, setLimit }) => {
           }}
         />
       </div>
-      <div>
-        <div>
-          [ Données : {data.count} éléments ({(pageNumber - 1) * limit + 1} /{" "}
-          {pageNumber * limit}) ]
-        </div>
+
+      <div className="pagination-data-container">
+        [ Données : {data.count} éléments ({(pageNumber - 1) * limit + 1} /{" "}
+        {pageNumber * limit}) ]
       </div>
     </>
   );

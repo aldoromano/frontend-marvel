@@ -20,9 +20,6 @@ const Characters = ({
   const tab = Cookies.get("character-favorite")
     ? JSON.parse(Cookies.get("character-favorite"))
     : [];
-  // const [tabFavorite, setTabFavorite] = useState(
-  //   JSON.parse(Cookies.get("character-favorite")) || []
-  // );
   const [tabFavorite, setTabFavorite] = useState(tab);
 
   useEffect(() => {
@@ -47,7 +44,7 @@ const Characters = ({
   const handleFavorite = (id) => {
     const tab = [...tabFavorite];
     const indexId = tab.indexOf(id);
-    console.log("handleFavorite -> ", tab.length, " - ", indexId);
+
     // Si l'id est référencé dans les cookies, on souhaite enlever le favori
     if (indexId >= 0) {
       tab.splice(indexId, 1);
@@ -56,8 +53,10 @@ const Characters = ({
       tab.push(id);
     }
 
+    // MAJ du state
     setTabFavorite(tab);
 
+    // MAJ du cookie
     Cookies.set("character-favorite", JSON.stringify(tab));
   };
 
@@ -67,13 +66,19 @@ const Characters = ({
     <>
       <div className="search-container">
         <input
-          type="text"
+          type="search"
           onChange={(event) => {
             setName(event.target.value);
           }}
+          placeholder="Tapez votre recherche ..."
         />
+
+        <Link to="/comics">
+          {" "}
+          <button> Comics </button>
+        </Link>
       </div>
-      <div className="pagination-container">
+      <div className="">
         <Pagination
           data={data}
           pageNumber={pageNumber}
@@ -110,13 +115,15 @@ const Characters = ({
               </Link>
               <div className="character-container-footer">
                 <h3>{character.name}</h3>
-                <button
-                  onClick={() => {
-                    toast.success(`${character.description} 🚀`);
-                  }}
-                >
-                  Plus...
-                </button>
+                {character.description && (
+                  <button
+                    onClick={() => {
+                      toast.success(`${character.description} 🚀`);
+                    }}
+                  >
+                    Plus...
+                  </button>
+                )}
               </div>
             </div>
           );

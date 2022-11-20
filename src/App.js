@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { React, useState } from "react";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import { Toaster } from "react-hot-toast";
 
 // Composants
@@ -42,8 +42,10 @@ function App() {
           element={
             <Comics
               urlBase={urlBase}
-              limit={setLimitComics}
-              skip={setPageComics}
+              limit={limitComics}
+              setLimit={setLimitComics}
+              pageNumber={pageComics}
+              setPageNumber={setPageComics}
             ></Comics>
           }
         />
